@@ -4,42 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LabClear - Cuestionario de salud</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-  :root { --cream:#F7F3ED;--deep:#1A1A2E;--teal:#0F7B6C;--teal-light:#E6F4F1;--red-soft:#E05C5C;--text:#2D2D2D;--muted:#7A7A8A;--border:#E0DAD2;--white:#FFFFFF; }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
-  .logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--deep);margin-bottom:0.5rem;text-align:center;}
-  .logo span{color:var(--teal);}
-  .header{text-align:center;margin-bottom:2rem;}
-  .header h1{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:400;color:var(--deep);margin-bottom:0.4rem;}
-  .header p{color:var(--muted);font-size:0.9rem;max-width:440px;line-height:1.6;}
-  .card{background:var(--white);border-radius:20px;padding:2.5rem;width:100%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,0.07);border:1px solid var(--border);}
-  .pregunta{margin-bottom:1.4rem;}
-  .pregunta-label{font-size:0.95rem;font-weight:500;color:var(--text);margin-bottom:0.8rem;display:block;}
-  .pregunta-sub{font-size:0.78rem;color:var(--muted);display:block;margin-top:0.2rem;font-weight:400;}
-  .opciones-si-no{display:flex;gap:0.75rem;}
-  .opcion{flex:1;padding:0.8rem;border-radius:10px;border:1.5px solid var(--border);background:var(--cream);cursor:pointer;text-align:center;font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--muted);transition:all 0.2s;}
-  .opcion:hover{border-color:var(--teal);color:var(--teal);}
-  .opcion.si.selected{background:var(--teal);border-color:var(--teal);color:white;}
-  .opcion.no.selected{background:var(--deep);border-color:var(--deep);color:white;}
-  .divider{border:none;border-top:1px solid var(--border);margin:1.6rem 0;}
-  .aviso{background:#FFF8E6;border:1px solid #F0D080;border-radius:10px;padding:0.85rem 1rem;font-size:0.8rem;color:#7A5C00;line-height:1.5;margin-bottom:1.5rem;}
-  .btn-guardar{width:100%;padding:0.9rem;background:var(--teal);color:white;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(15,123,108,0.25);}
-  .btn-guardar:hover{background:var(--deep);}
-  .btn-guardar:disabled{opacity:0.6;cursor:not-allowed;}
-  .btn-omitir{width:100%;padding:0.7rem;background:transparent;color:var(--muted);border:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;cursor:pointer;margin-top:0.75rem;}
-  .btn-omitir:hover{color:var(--text);}
-  .msg-error{background:#FFEDED;color:var(--red-soft);border:1px solid #F5C5C5;border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;margin-bottom:1rem;display:none;}
-  .msg-error.show{display:block;}
-  .oculto{display:none;}
+:root { --cream:#F7F3ED;--deep:#1A1A2E;--teal:#0F7B6C;--teal-light:#E6F4F1;--red-soft:#E05C5C;--text:#2D2D2D;--muted:#7A7A8A;--border:#E0DAD2;--white:#FFFFFF; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+.logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--deep);margin-bottom:0.5rem;text-align:center;}
+.logo span{color:var(--teal);}
+.header{text-align:center;margin-bottom:2rem;}
+.header h1{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:400;color:var(--deep);margin-bottom:0.4rem;}
+.header p{color:var(--muted);font-size:0.9rem;max-width:440px;line-height:1.6;}
+.card{background:var(--white);border-radius:20px;padding:2.5rem;width:100%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,0.07);border:1px solid var(--border);}
+.pregunta{margin-bottom:1.4rem;}
+.pregunta-label{font-size:0.95rem;font-weight:500;color:var(--text);margin-bottom:0.8rem;display:block;}
+.pregunta-sub{font-size:0.78rem;color:var(--muted);display:block;margin-top:0.2rem;font-weight:400;}
+.opciones-si-no{display:flex;gap:0.75rem;}
+.opcion{flex:1;padding:0.8rem;border-radius:10px;border:1.5px solid var(--border);background:var(--cream);cursor:pointer;text-align:center;font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:500;color:var(--muted);transition:all 0.2s;}
+.opcion:hover{border-color:var(--teal);color:var(--teal);}
+.opcion.si.selected{background:var(--teal);border-color:var(--teal);color:white;}
+.opcion.no.selected{background:var(--deep);border-color:var(--deep);color:white;}
+.divider{border:none;border-top:1px solid var(--border);margin:1.6rem 0;}
+.aviso{background:#FFF8E6;border:1px solid #F0D080;border-radius:10px;padding:0.85rem 1rem;font-size:0.8rem;color:#7A5C00;line-height:1.5;margin-bottom:1.5rem;}
+.btn-guardar{width:100%;padding:0.9rem;background:var(--teal);color:white;border:none;border-radius:12px;font-family:'Inter',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(15,123,108,0.25);}
+.btn-guardar:hover{background:var(--deep);}
+.btn-guardar:disabled{opacity:0.6;cursor:not-allowed;}
+.btn-omitir{width:100%;padding:0.7rem;background:transparent;color:var(--muted);border:none;font-family:'Inter',sans-serif;font-size:0.85rem;cursor:pointer;margin-top:0.75rem;}
+.btn-omitir:hover{color:var(--text);}
+.msg-error{background:#FFEDED;color:var(--red-soft);border:1px solid #F5C5C5;border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;margin-bottom:1rem;display:none;}
+.msg-error.show{display:block;}
+.oculto{display:none;}
 </style>
 </head>
 <body>
 <div class="logo">Lab<span>Clear</span></div>
 <div class="header">
-  <h1>Una pregunta rapida</h1>
-  <p>Esta informacion nos permite adaptar la interpretacion de tus analisis a tu situacion de salud.</p>
+  <h1>Una pregunta rápida</h1>
+  <p>Esta información nos permite adaptar la interpretación de tus análisis a tu situación de salud.</p>
 </div>
 <div class="card">
   <div class="msg-error" id="form-error"></div>
@@ -47,31 +47,31 @@
   <div class="pregunta">
     <span class="pregunta-label">¿Te han diagnosticado diabetes?<span class="pregunta-sub">Incluye diabetes tipo 1, tipo 2 o prediabetes</span></span>
     <div class="opciones-si-no">
-      <button class="opcion si" data-campo="diabetes" data-val="1" onclick="seleccionar(this)">Si</button>
+      <button class="opcion si" data-campo="diabetes" data-val="1" onclick="seleccionar(this)">Sí</button>
       <button class="opcion no selected" data-campo="diabetes" data-val="0" onclick="seleccionar(this)">No</button>
     </div>
   </div>
 
   <div class="pregunta" id="preg-embarazo">
-    <span class="pregunta-label">¿Estas embarazada actualmente?</span>
+    <span class="pregunta-label">¿Estás embarazada actualmente?</span>
     <div class="opciones-si-no">
-      <button class="opcion si" data-campo="embarazo" data-val="1" onclick="seleccionar(this)">Si</button>
+      <button class="opcion si" data-campo="embarazo" data-val="1" onclick="seleccionar(this)">Sí</button>
       <button class="opcion no selected" data-campo="embarazo" data-val="0" onclick="seleccionar(this)">No</button>
     </div>
   </div>
 
   <div class="pregunta">
-    <span class="pregunta-label">¿Te han diagnosticado hipertension (presion alta)?</span>
+    <span class="pregunta-label">¿Te han diagnosticado hipertensión (presión alta)?</span>
     <div class="opciones-si-no">
-      <button class="opcion si" data-campo="hipertension" data-val="1" onclick="seleccionar(this)">Si</button>
+      <button class="opcion si" data-campo="hipertension" data-val="1" onclick="seleccionar(this)">Sí</button>
       <button class="opcion no selected" data-campo="hipertension" data-val="0" onclick="seleccionar(this)">No</button>
     </div>
   </div>
 
   <div class="pregunta">
-    <span class="pregunta-label">¿Te han dicho que tienes colesterol alto?<span class="pregunta-sub">Colesterol total, LDL elevado o trigliceridos altos</span></span>
+    <span class="pregunta-label">¿Te han dicho que tienes colesterol alto?<span class="pregunta-sub">Colesterol total, LDL elevado o triglicéridos altos</span></span>
     <div class="opciones-si-no">
-      <button class="opcion si" data-campo="dislipidemia" data-val="1" onclick="seleccionar(this)">Si</button>
+      <button class="opcion si" data-campo="dislipidemia" data-val="1" onclick="seleccionar(this)">Sí</button>
       <button class="opcion no selected" data-campo="dislipidemia" data-val="0" onclick="seleccionar(this)">No</button>
     </div>
   </div>
@@ -79,60 +79,74 @@
   <div class="pregunta">
     <span class="pregunta-label">¿Te han diagnosticado anemia?</span>
     <div class="opciones-si-no">
-      <button class="opcion si" data-campo="anemia" data-val="1" onclick="seleccionar(this)">Si</button>
+      <button class="opcion si" data-campo="anemia" data-val="1" onclick="seleccionar(this)">Sí</button>
       <button class="opcion no selected" data-campo="anemia" data-val="0" onclick="seleccionar(this)">No</button>
     </div>
   </div>
 
   <div class="pregunta">
-    <span class="pregunta-label">¿Tienes algun problema de riñones diagnosticado?<span class="pregunta-sub">Enfermedad renal cronica, piedras recurrentes, etc.</span></span>
+    <span class="pregunta-label">¿Tienes algún problema de riñones diagnosticado?<span class="pregunta-sub">Enfermedad renal crónica, piedras recurrentes, etc.</span></span>
     <div class="opciones-si-no">
-      <button class="opcion si" data-campo="enfermedad_renal" data-val="1" onclick="seleccionar(this)">Si</button>
+      <button class="opcion si" data-campo="enfermedad_renal" data-val="1" onclick="seleccionar(this)">Sí</button>
       <button class="opcion no selected" data-campo="enfermedad_renal" data-val="0" onclick="seleccionar(this)">No</button>
     </div>
   </div>
 
   <hr class="divider">
-  <div class="aviso">Esta informacion es confidencial y se usa unicamente para personalizar la interpretacion de tus analisis. LabClear no emite diagnosticos medicos.</div>
-  <button class="btn-guardar" id="btn-guardar" onclick="guardar()">Continuar</button>
+  <div class="aviso">Esta información es confidencial y se usa únicamente para personalizar la interpretación de tus análisis. LabClear no emite diagnósticos médicos.</div>
+  <button class="btn-guardar" id="btn-guardar" onclick="guardar()">Continuar al dashboard</button>
   <button class="btn-omitir" onclick="omitir()">Omitir por ahora</button>
 </div>
 
 <script>
-const API='http://localhost:5000/api';
-const token=localStorage.getItem('token');
-if(!token) window.location.href='/index.html';
+const API = 'https://blue-turkey-268826.hostingersite.com/labclear/api';
+const token = localStorage.getItem('token');
+if (!token) window.location.href = '/labclear/index.html';
 
-const datos={diabetes:0,embarazo:0,hipertension:0,dislipidemia:0,anemia:0,enfermedad_renal:0};
+const datos = { diabetes:0, embarazo:0, hipertension:0, dislipidemia:0, anemia:0, enfermedad_renal:0 };
 
-async function verificarSexo(){
-  try{
-    const res=await fetch(`${API}/perfil`,{headers:{'Authorization':'Bearer '+token}});
-    const data=await res.json();
-    if(data.usuario?.sexo==='M') document.getElementById('preg-embarazo').classList.add('oculto');
-  }catch(e){}
+async function verificarSexo() {
+  try {
+    const res = await fetch(`${API}/perfil.php`, { headers: { 'Authorization': 'Bearer ' + token } });
+    const data = await res.json();
+    if (data.usuario?.sexo === 'M') document.getElementById('preg-embarazo').classList.add('oculto');
+  } catch(e) {}
 }
 verificarSexo();
 
-function seleccionar(btn){
-  btn.closest('.opciones-si-no').querySelectorAll('.opcion').forEach(b=>b.classList.remove('selected'));
+function seleccionar(btn) {
+  btn.closest('.opciones-si-no').querySelectorAll('.opcion').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
-  datos[btn.dataset.campo]=parseInt(btn.dataset.val);
+  datos[btn.dataset.campo] = parseInt(btn.dataset.val);
 }
 
-async function guardar(){
-  const btn=document.getElementById('btn-guardar');
-  btn.disabled=true; btn.textContent='Guardando...';
-  try{
-    const res=await fetch(`${API}/antecedentes`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(datos)});
-    const data=await res.json();
-    if(res.ok){ window.location.href='/dashboard.html'; }
-    else{ const e=document.getElementById('form-error'); e.textContent=data.error||'Error al guardar.'; e.classList.add('show'); }
-  }catch(e){ const er=document.getElementById('form-error'); er.textContent='No se pudo conectar.'; er.classList.add('show'); }
-  finally{ btn.disabled=false; btn.textContent='Continuar'; }
+async function guardar() {
+  const btn = document.getElementById('btn-guardar');
+  btn.disabled = true; btn.textContent = 'Guardando...';
+  try {
+    const res = await fetch(`${API}/antecedentes.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify(datos)
+    });
+    const data = await res.json();
+    if (res.ok) {
+      window.location.href = '/labclear/dashboard.html';
+    } else {
+      const e = document.getElementById('form-error');
+      e.textContent = data.error || 'Error al guardar.';
+      e.classList.add('show');
+    }
+  } catch(e) {
+    const er = document.getElementById('form-error');
+    er.textContent = 'No se pudo conectar.';
+    er.classList.add('show');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Continuar al dashboard';
+  }
 }
 
-function omitir(){ window.location.href='/dashboard.html'; }
+function omitir() { window.location.href = '/labclear/dashboard.html'; }
 </script>
 </body>
 </html>

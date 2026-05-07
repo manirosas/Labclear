@@ -4,551 +4,734 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LabClear – Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style> :root {
-  --cream: #F7F3ED; --deep: #1A1A2E; --teal: #0F7B6C; --teal-light: #E6F4F1;
-  --amber: #E8A838; --red-soft: #E05C5C; --text: #2D2D2D; --muted: #7A7A8A;
-  --border: #E0DAD2; --white: #FFFFFF; --sidebar-w: 240px;
- }
- * { margin: 0; padding: 0; box-sizing: border-box; }
- body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); display: flex; min-height: 100vh; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#F7F3ED;--deep:#1A1A2E;--teal:#0F7B6C;--teal-light:#E6F4F1;
+  --amber:#E8A838;--red-soft:#E05C5C;--text:#2D2D2D;--muted:#7A7A8A;
+  --border:#E0DAD2;--white:#FFFFFF;--sidebar-w:240px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);display:flex;min-height:100vh;}
 
- /* SIDEBAR */
- aside { width: var(--sidebar-w); background: var(--deep); min-height: 100vh; padding: 2rem 1.5rem; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; }
- .logo { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: white; margin-bottom: 2.5rem; letter-spacing: -0.5px; }
- .logo span { color: var(--teal); }
- .nav-section { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 0.6rem; margin-top: 1.2rem; }
- .nav-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.9rem; border-radius: 10px; color: rgba(255,255,255,0.6); font-size: 0.88rem; cursor: pointer; transition: all 0.2s; text-decoration: none; margin-bottom: 0.2rem; border: none; background: transparent; width: 100%; text-align: left; font-family: 'DM Sans', sans-serif; }
- .nav-item:hover { background: rgba(255,255,255,0.07); color: white; }
- .nav-item.active { background: var(--teal); color: white; }
- .nav-icon { font-size: 1rem; width: 20px; text-align: center; }
- .sidebar-bottom { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; }
- .user-pill { display: flex; align-items: center; gap: 0.75rem; }
- .user-avatar { width: 36px; height: 36px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: white; font-weight: 500; flex-shrink: 0; }
- .user-info strong { display: block; color: white; font-size: 0.85rem; }
- .user-info span { font-size: 0.72rem; color: rgba(255,255,255,0.4); cursor: pointer; }
- .user-info span:hover { color: var(--red-soft); }
+aside{width:var(--sidebar-w);background:var(--deep);min-height:100vh;padding:2rem 1.5rem;display:flex;flex-direction:column;position:fixed;top:0;left:0;}
+.logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:white;margin-bottom:2.5rem;letter-spacing:-0.5px;}
+.logo span{color:var(--teal);}
+.nav-section{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-bottom:0.6rem;margin-top:1.2rem;}
+.nav-item{display:flex;align-items:center;gap:0.75rem;padding:0.65rem 0.9rem;border-radius:10px;color:rgba(255,255,255,0.6);font-size:0.88rem;cursor:pointer;transition:all 0.2s;text-decoration:none;margin-bottom:0.2rem;border:none;background:transparent;width:100%;text-align:left;font-family:'Inter',sans-serif;}
+.nav-item:hover{background:rgba(255,255,255,0.07);color:white;}
+.nav-item.active{background:var(--teal);color:white;}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0.6;}
+.sidebar-bottom{margin-top:auto;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.2rem;}
+.user-pill{display:flex;align-items:center;gap:0.75rem;}
+.user-avatar{width:36px;height:36px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:white;font-weight:600;flex-shrink:0;}
+.user-info strong{display:block;color:white;font-size:0.85rem;}
+.user-info span{font-size:0.72rem;color:rgba(255,255,255,0.4);cursor:pointer;}
+.user-info span:hover{color:var(--red-soft);}
 
- /* MAIN */
- main { margin-left: var(--sidebar-w); flex: 1; padding: 2.5rem 3rem; max-width: calc(100vw - var(--sidebar-w)); }
- .page-header { margin-bottom: 2rem; }
- .page-header h1 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 400; color: var(--deep); }
- .page-header p { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; }
+main{margin-left:var(--sidebar-w);flex:1;padding:2.5rem 3rem;max-width:calc(100vw - var(--sidebar-w));}
+.page-header{margin-bottom:2rem;}
+.page-header h1{font-family:'Fraunces',serif;font-size:2rem;font-weight:400;color:var(--deep);}
+.page-header p{color:var(--muted);font-size:0.9rem;margin-top:0.3rem;}
 
- /* STATS */
- .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; margin-bottom: 2rem; }
- .stat-card { background: var(--white); border-radius: 16px; padding: 1.4rem; border: 1px solid var(--border); transition: transform 0.2s; }
- .stat-card:hover { transform: translateY(-2px); }
- .stat-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
- .stat-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
- .stat-icon.teal { background: var(--teal-light); }
- .stat-icon.amber { background: #FFF3E0; }
- .stat-icon.red { background: #FFEDED; }
- .stat-icon.purple { background: #F0EEFF; }
- .stat-card .value { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 400; color: var(--deep); line-height: 1; }
- .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem;}
+.stat-card{background:var(--white);border-radius:16px;padding:1.4rem;border:1px solid var(--border);transition:transform 0.2s;}
+.stat-card:hover{transform:translateY(-2px);}
+.stat-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem;}
+.stat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;}
+.stat-icon.teal{background:var(--teal-light);color:var(--teal);}
+.stat-icon.amber{background:#FFF3E0;color:#C07A00;}
+.stat-icon.red{background:#FFEDED;color:var(--red-soft);}
+.stat-icon.purple{background:#F0EEFF;color:#6B5CF6;}
+.stat-card .value{font-family:'Fraunces',serif;font-size:2rem;font-weight:400;color:var(--deep);line-height:1;}
+.stat-card .label{font-size:0.8rem;color:var(--muted);margin-top:0.2rem;}
 
- /* GRID */
- .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
- .card { background: var(--white); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); }
- .card-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; color: var(--deep); margin-bottom: 1.2rem; display: flex; justify-content: space-between; align-items: center; }
- .card-title a { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--teal); text-decoration: none; font-weight: 400; cursor: pointer; }
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.card{background:var(--white);border-radius:16px;padding:1.5rem;border:1px solid var(--border);}
+.card-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--deep);margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center;}
+.card-title a{font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--teal);text-decoration:none;font-weight:400;cursor:pointer;}
 
- /* ANÁLISIS LIST */
- .analysis-item { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: opacity 0.15s; }
- .analysis-item:last-child { border-bottom: none; }
- .analysis-item:hover { opacity: 0.75; }
- .analysis-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
- .analysis-info { flex: 1; }
- .analysis-info strong { display: block; font-size: 0.88rem; color: var(--text); }
- .analysis-info span { font-size: 0.76rem; color: var(--muted); }
- .analysis-badge { font-size: 0.72rem; font-weight: 500; padding: 0.25rem 0.7rem; border-radius: 50px; }
+.analysis-item{display:flex;align-items:center;gap:1rem;padding:0.85rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity 0.15s;}
+.analysis-item:last-child{border-bottom:none;}
+.analysis-item:hover{opacity:0.75;}
+.analysis-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;flex-shrink:0;background:var(--teal-light);color:var(--teal);}
+.analysis-info{flex:1;}
+.analysis-info strong{display:block;font-size:0.88rem;color:var(--text);}
+.analysis-info span{font-size:0.76rem;color:var(--muted);}
+.analysis-badge{font-size:0.72rem;font-weight:500;padding:0.25rem 0.7rem;border-radius:50px;}
 
- /* ALERTS */
- .alert-item { display: flex; gap: 0.9rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
- .alert-item:last-child { border-bottom: none; }
- .alert-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
- .alert-text strong { display: block; font-size: 0.85rem; color: var(--text); }
- .alert-text span { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.alert-item{display:flex;gap:0.9rem;padding:0.9rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.alert-item:last-child{border-bottom:none;}
+.alert-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.alert-text strong{display:block;font-size:0.85rem;color:var(--text);}
+.alert-text span{font-size:0.78rem;color:var(--muted);line-height:1.5;}
 
- /* BUTTONS */
- .btn-sm { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--teal); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.2s; }
- .btn-sm:hover { background: var(--deep); }
- .btn-primary { background: var(--teal); color: white; padding: 0.8rem 2rem; border-radius: 10px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(15,123,108,0.25); }
- .btn-primary:hover { background: var(--deep); }
- .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
- .btn-outline { background: transparent; color: var(--muted); padding: 0.8rem 1.5rem; border-radius: 10px; border: 1.5px solid var(--border); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
- .btn-outline:hover { border-color: var(--text); color: var(--text); }
+.btn-sm{display:inline-flex;align-items:center;gap:0.4rem;background:var(--teal);color:white;padding:0.6rem 1.2rem;border-radius:8px;border:none;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:background 0.2s;}
+.btn-sm:hover{background:var(--deep);}
+.btn-primary{background:var(--teal);color:white;padding:0.8rem 2rem;border-radius:10px;border:none;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(15,123,108,0.25);}
+.btn-primary:hover{background:var(--deep);}
+.btn-primary:disabled{opacity:0.6;cursor:not-allowed;}
+.btn-outline{background:transparent;color:var(--muted);padding:0.8rem 1.5rem;border-radius:10px;border:1.5px solid var(--border);font-family:'Inter',sans-serif;font-size:0.9rem;cursor:pointer;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--text);color:var(--text);}
+.btn-danger{background:transparent;color:var(--red-soft);padding:0.8rem 1.5rem;border-radius:10px;border:1.5px solid #F5C5C5;font-family:'Inter',sans-serif;font-size:0.9rem;cursor:pointer;transition:all 0.2s;}
+.btn-danger:hover{background:#FFEDED;}
 
- /* TABS */
- .study-tab { padding: 0.55rem 1.2rem; border-radius: 50px; border: 1.5px solid var(--border); background: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: var(--muted); cursor: pointer; transition: all 0.2s; }
- .study-tab.active { background: var(--deep); border-color: var(--deep); color: white; }
- .study-tab:hover:not(.active) { border-color: var(--teal); color: var(--teal); }
+.study-tab{padding:0.55rem 1.2rem;border-radius:50px;border:1.5px solid var(--border);background:var(--white);font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.study-tab.active{background:var(--deep);border-color:var(--deep);color:white;}
+.study-tab:hover:not(.active){border-color:var(--teal);color:var(--teal);}
 
- /* FORM */
- .params-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.5rem; }
- .param-input-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
- .param-unit { font-size: 0.72rem; color: var(--muted); font-weight: 400; }
- .param-input-group input, .param-input-group select { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: var(--cream); color: var(--text); outline: none; transition: border-color 0.2s, background 0.2s; }
- .param-input-group input:focus, .param-input-group select:focus { border-color: var(--teal); background: white; }
- .param-hint { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
- .section-divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
- .form-actions { display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+.params-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+.param-input-group label{display:block;font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:0.3rem;}
+.param-unit{font-size:0.72rem;color:var(--muted);font-weight:400;}
+.param-input-group input,.param-input-group select{width:100%;padding:0.7rem 0.9rem;border:1.5px solid var(--border);border-radius:10px;font-family:'Inter',sans-serif;font-size:0.95rem;background:var(--cream);color:var(--text);outline:none;transition:border-color 0.2s,background 0.2s;}
+.param-input-group input:focus,.param-input-group select:focus{border-color:var(--teal);background:white;}
+.param-hint{font-size:0.72rem;color:var(--muted);margin-top:0.25rem;}
+.section-divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+.form-actions{display:flex;gap:1rem;align-items:center;margin-top:1.5rem;}
 
- /* LOADING / MESSAGES */
- .loading-box { text-align: center; padding: 3rem; }
- .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
- @keyframes spin { to { transform: rotate(360deg); } }
- .msg-error { background: #FFEDED; color: var(--red-soft); border: 1px solid #F5C5C5; border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
- .msg-error.show { display: block; }
- .msg-success { background: var(--teal-light); color: var(--teal); border: 1px solid #C3E4DE; border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
- .msg-success.show { display: block; }
- .empty-state { text-align: center; padding: 3rem; color: var(--muted); }
- .empty-state .e-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.loading-box{text-align:center;padding:3rem;}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.msg-error{background:#FFEDED;color:var(--red-soft);border:1px solid #F5C5C5;border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;margin-bottom:1rem;display:none;}
+.msg-error.show{display:block;}
+.msg-success{background:var(--teal-light);color:var(--teal);border:1px solid #C3E4DE;border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;margin-bottom:1rem;display:none;}
+.msg-success.show{display:block;}
+.empty-state{text-align:center;padding:3rem;color:var(--muted);}
 
- /* VIEWS */
- .view { display: none; }
- .view.active { display: block; }
+.view{display:none;}
+.view.active{display:block;}
 
- /* RESULTADO */
- .result-param { padding: 1rem 0; border-bottom: 1px solid var(--border); }
- .result-param:last-child { border-bottom: none; }
- .result-param-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
- .result-bar-wrap { height: 8px; background: var(--border); border-radius: 10px; position: relative; margin-bottom: 0.5rem; }
- .result-bar-zone { position: absolute; height: 100%; border-radius: 10px; }
- .result-bar-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; position: absolute; top: -2px; transform: translateX(-50%); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
- .result-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
- .result-ia { border-radius: 8px; padding: 0.7rem 0.9rem; margin-top: 0.7rem; font-size: 0.82rem; color: var(--text); line-height: 1.5; }
+.result-param{padding:1rem 0;border-bottom:1px solid var(--border);}
+.result-param:last-child{border-bottom:none;}
+.result-param-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
+.result-bar-wrap{height:8px;background:var(--border);border-radius:10px;position:relative;margin-bottom:0.5rem;}
+.result-bar-zone{position:absolute;height:100%;border-radius:10px;}
+.result-bar-dot{width:12px;height:12px;border-radius:50%;border:2px solid white;position:absolute;top:-2px;transform:translateX(-50%);box-shadow:0 2px 6px rgba(0,0,0,0.15);}
+.result-labels{display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);}
 
- /* PERFIL */
- .perfil-avatar { width: 64px; height: 64px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; font-weight: 500; flex-shrink: 0; }
+/* Antecedentes en perfil */
+.antecedente-item{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);}
+.antecedente-item:last-child{border-bottom:none;}
+.antecedente-label{font-size:0.88rem;font-weight:500;color:var(--text);}
+.antecedente-sub{font-size:0.75rem;color:var(--muted);margin-top:0.1rem;}
+.toggle-group{display:flex;gap:0.5rem;}
+.toggle-btn{padding:0.35rem 0.9rem;border-radius:50px;border:1.5px solid var(--border);background:var(--cream);font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.toggle-btn.si.active{background:var(--teal);border-color:var(--teal);color:white;}
+.toggle-btn.no.active{background:var(--deep);border-color:var(--deep);color:white;}
+.toggle-btn:hover:not(.active){border-color:var(--teal);color:var(--teal);}
 </style>
 </head>
-<body> <!-- SIDEBAR -->
-<aside> <div class="logo">Lab<span>Clear</span></div> <div class="nav-section">Principal</div> <button class="nav-item active" id="nav-dashboard" onclick="showView('dashboard')"> <span class="nav-icon"></span> Dashboard
- </button> <button class="nav-item" id="nav-nuevo-analisis" onclick="showView('nuevo-analisis')"> <span class="nav-icon"></span> Nuevo análisis
- </button> <div class="nav-section">Mis análisis</div> <button class="nav-item" id="nav-historial" onclick="showView('historial')"> <span class="nav-icon"></span> Historial
- </button> <button class="nav-item" id="nav-graficas" onclick="showView('graficas')"> <span class="nav-icon"></span> Gráficas
- </button> <div class="nav-section">Cuenta</div> <button class="nav-item" id="nav-perfil" onclick="showView('perfil')"> <span class="nav-icon"></span> Mi perfil
- </button> <div class="sidebar-bottom"> <div class="user-pill"> <div class="user-avatar" id="sidebar-avatar">…</div> <div class="user-info"> <strong id="sidebar-nombre">Cargando…</strong> <span onclick="cerrarSesion()">Cerrar sesión</span> </div> </div> </div>
-</aside> <!-- MAIN -->
-<main> <!-- DASHBOARD VIEW --> <div class="view active" id="v-dashboard"> <div class="page-header"> <h1 id="dash-saludo">Hola </h1> <p>Aquí está el resumen de tus análisis más recientes</p> </div> <div class="stats-grid"> <div class="stat-card"> <div class="stat-top"> <div><div class="value" id="stat-total">–</div><div class="label">Análisis registrados</div></div> <div class="stat-icon teal"></div> </div> </div> <div class="stat-card"> <div class="stat-top"> <div><div class="value" id="stat-alertas">–</div><div class="label">Valores fuera de rango</div></div> <div class="stat-icon red"></div> </div> </div> <div class="stat-card"> <div class="stat-top"> <div><div class="value" id="stat-estudios">–</div><div class="label">Tipos de estudios</div></div> <div class="stat-icon amber"></div> </div> </div> <div class="stat-card"> <div class="stat-top"> <div><div class="value" id="stat-ultimo">–</div><div class="label">Último análisis</div></div> <div class="stat-icon purple"></div> </div> </div> </div> <div class="two-col"> <div class="card"> <div class="card-title">Análisis recientes <a onclick="showView('historial')">Ver todos →</a></div> <div id="dash-recientes"> <div class="loading-box"><div class="spinner"></div><p style="color:var(--muted);font-size:0.85rem;">Cargando…</p></div> </div> <div style="margin-top:1.2rem;"> <button class="btn-sm" onclick="showView('nuevo-analisis')">+ Registrar nuevo análisis</button> </div> </div> <div class="card"> <div class="card-title">Valores a revisar</div> <div id="dash-alertas"> <div class="loading-box"><div class="spinner"></div><p style="color:var(--muted);font-size:0.85rem;">Cargando…</p></div> </div> </div> </div> </div> <!-- NUEVO ANÁLISIS VIEW --> <div class="view" id="v-nuevo-analisis"> <div class="page-header"> <h1>Nuevo análisis</h1> <p>Selecciona el tipo de estudio e ingresa tus valores</p> </div> <div class="card" style="max-width:900px;"> <div style="display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;" id="study-tabs"> <button class="study-tab active" data-study="quimica" onclick="selectStudy(this)"> Química Sanguínea</button> <button class="study-tab" data-study="biometria" onclick="selectStudy(this)"> Biometría Hemática</button> <button class="study-tab" data-study="lipidico" onclick="selectStudy(this)"> Perfil Lipídico</button> <button class="study-tab" data-study="renal" onclick="selectStudy(this)"> Función Renal</button> <button class="study-tab" data-study="hepatica" onclick="selectStudy(this)"> Función Hepática</button> </div> <div style="margin-bottom:1.2rem;"> <label style="font-size:0.82rem;font-weight:500;display:block;margin-bottom:0.4rem;">Fecha del análisis</label> <input type="date" id="fecha-estudio" style="padding:0.7rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;background:var(--cream);outline:none;"> </div> <hr class="section-divider"> <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;"> Ingresa solo los valores que aparezcan en tu resultado. Puedes dejar vacíos los que no tengas.</p> <div class="params-grid" id="params-form"></div> <div class="msg-error" id="analisis-error"></div> <div class="form-actions"> <button class="btn-primary" id="btn-analizar" onclick="enviarAnalisis()">Analizar</button> <button class="btn-outline" onclick="showView('dashboard')">Cancelar</button> </div> </div> </div> <!-- RESULTADO VIEW --> <div class="view" id="v-resultado"> <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;"> <div> <h1 id="res-titulo">Resultado</h1> <p id="res-subtitulo">–</p> </div> <button class="btn-sm" onclick="showView('historial')">← Volver al historial</button> </div> <div style="display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;" id="res-summary-strip"></div> <div class="card" style="margin-bottom:1.5rem;"> <div class="card-title">Resultados detallados</div> <div id="res-params"></div> </div> <div class="card" style="margin-bottom:1.5rem;"> <div class="card-title">Interpretación: </div> <div id="res-ia" style="font-size:0.88rem;line-height:1.8;color:var(--text);white-space:pre-wrap;"></div> </div> <div style="background:#FFF8E6;border:1px solid #F0D080;border-radius:12px;padding:1.1rem 1.4rem;display:flex;gap:0.8rem;align-items:flex-start;"> <span style="font-size:1.2rem;"></span> <p style="font-size:0.82rem;color:#7A5C00;line-height:1.6;"> <strong>Aviso importante:</strong> Esta información es únicamente orientativa y educativa. No constituye un diagnóstico médico. Siempre consulta a un profesional de la salud para interpretar correctamente tus resultados.
-   </p> </div> </div> <!-- HISTORIAL VIEW --> <div class="view" id="v-historial"> <div class="page-header"> <h1>Historial de análisis</h1> <p>Todos tus registros guardados</p> </div> <div class="card"> <div id="historial-contenido"> <div class="loading-box"><div class="spinner"></div><p style="color:var(--muted);font-size:0.85rem;">Cargando historial…</p></div> </div> </div> </div> <!-- GRÁFICAS VIEW --> <div class="view" id="v-graficas"> <div class="page-header"> <h1>Gráficas de evolución</h1> <p>Visualiza cómo han cambiado tus valores a lo largo del tiempo</p> </div> <div id="graficas-contenido"> <div class="loading-box"><div class="spinner"></div><p style="color:var(--muted);font-size:0.85rem;">Cargando gráficas…</p></div> </div> </div> <!-- PERFIL VIEW --> <div class="view" id="v-perfil"> <div class="page-header"> <h1>Mi perfil</h1> <p>Actualiza tu información personal</p> </div> <div class="card" style="max-width:560px;"> <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);"> <div class="perfil-avatar" id="perfil-avatar">…</div> <div> <strong style="display:block;font-size:1rem;color:var(--deep);" id="perfil-nombre-display">–</strong> <span style="font-size:0.83rem;color:var(--muted);" id="perfil-correo-display">–</span> </div> </div> <div class="msg-error" id="perfil-error"></div> <div class="msg-success" id="perfil-success"></div> <div style="display:grid;gap:1.1rem;"> <div class="param-input-group"> <label>Nombre completo</label> <input type="text" id="perfil-nombre"> </div> <div class="param-input-group"> <label>Correo electrónico</label> <input type="email" id="perfil-correo"> </div> <div class="param-input-group"> <label>Fecha de nacimiento</label> <input type="date" id="perfil-fecha"> </div> <div class="param-input-group"> <label>Sexo biológico</label> <select id="perfil-sexo"> <option value="">No especificado</option> <option value="M">Masculino</option> <option value="F">Femenino</option> </select> </div> </div> <div class="form-actions" style="margin-top:1.5rem;"> <button class="btn-primary" onclick="guardarPerfil()">Guardar cambios</button> <button class="btn-outline" onclick="cerrarSesion()">Cerrar sesión</button> </div> </div> </div> </main> <script>
-const API = 'http://localhost:5000/api';
+<body>
+<aside>
+  <div class="logo">Lab<span>Clear</span></div>
+  <div class="nav-section">Principal</div>
+  <button class="nav-item active" id="nav-dashboard" onclick="showView('dashboard')">
+    <div class="nav-dot"></div> Dashboard
+  </button>
+  <button class="nav-item" id="nav-nuevo-analisis" onclick="showView('nuevo-analisis')">
+    <div class="nav-dot"></div> Nuevo análisis
+  </button>
+  <div class="nav-section">Mis análisis</div>
+  <button class="nav-item" id="nav-historial" onclick="showView('historial')">
+    <div class="nav-dot"></div> Historial
+  </button>
+  <button class="nav-item" id="nav-graficas" onclick="showView('graficas')">
+    <div class="nav-dot"></div> Gráficas
+  </button>
+  <div class="nav-section">Cuenta</div>
+  <button class="nav-item" id="nav-perfil" onclick="showView('perfil')">
+    <div class="nav-dot"></div> Mi perfil
+  </button>
+  <div class="sidebar-bottom">
+    <div class="user-pill">
+      <div class="user-avatar" id="sidebar-avatar">…</div>
+      <div class="user-info">
+        <strong id="sidebar-nombre">Cargando…</strong>
+        <span onclick="cerrarSesion()">Cerrar sesión</span>
+      </div>
+    </div>
+  </div>
+</aside>
 
-//  Protección de ruta 
+<main>
+  <!-- DASHBOARD -->
+  <div class="view active" id="v-dashboard">
+    <div class="page-header">
+      <h1 id="dash-saludo">Hola</h1>
+      <p>Aquí está el resumen de tus análisis más recientes</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-top">
+          <div><div class="value" id="stat-total">–</div><div class="label">Análisis registrados</div></div>
+          <div class="stat-icon teal">LAB</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <div><div class="value" id="stat-alertas">–</div><div class="label">Valores fuera de rango</div></div>
+          <div class="stat-icon red">ALT</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <div><div class="value" id="stat-estudios">–</div><div class="label">Tipos de estudios</div></div>
+          <div class="stat-icon amber">EST</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <div><div class="value" id="stat-ultimo">–</div><div class="label">Último análisis</div></div>
+          <div class="stat-icon purple">FEC</div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Análisis recientes <a onclick="showView('historial')">Ver todos</a></div>
+        <div id="dash-recientes"><div class="loading-box"><div class="spinner"></div></div></div>
+        <div style="margin-top:1.2rem;">
+          <button class="btn-sm" onclick="showView('nuevo-analisis')">+ Registrar nuevo análisis</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Valores a revisar</div>
+        <div id="dash-alertas"><div class="loading-box"><div class="spinner"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUEVO ANÁLISIS -->
+  <div class="view" id="v-nuevo-analisis">
+    <div class="page-header"><h1>Nuevo análisis</h1><p>Selecciona el tipo de estudio e ingresa tus valores</p></div>
+    <div class="card" style="max-width:900px;">
+      <div style="display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;" id="study-tabs">
+        <button class="study-tab active" data-study="quimica" onclick="selectStudy(this)">Química Sanguínea</button>
+        <button class="study-tab" data-study="biometria" onclick="selectStudy(this)">Biometría Hemática</button>
+        <button class="study-tab" data-study="lipidico" onclick="selectStudy(this)">Perfil Lipídico</button>
+        <button class="study-tab" data-study="renal" onclick="selectStudy(this)">Función Renal</button>
+        <button class="study-tab" data-study="hepatica" onclick="selectStudy(this)">Función Hepática</button>
+      </div>
+      <div style="margin-bottom:1.2rem;">
+        <label style="font-size:0.82rem;font-weight:500;display:block;margin-bottom:0.4rem;">Fecha del análisis</label>
+        <input type="date" id="fecha-estudio" style="padding:0.7rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'Inter',sans-serif;font-size:0.9rem;background:var(--cream);outline:none;">
+      </div>
+      <hr class="section-divider">
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">Ingresa solo los valores que aparezcan en tu resultado. Puedes dejar vacíos los que no tengas.</p>
+      <div class="params-grid" id="params-form"></div>
+      <div class="msg-error" id="analisis-error"></div>
+      <div class="form-actions">
+        <button class="btn-primary" id="btn-analizar" onclick="enviarAnalisis()">Analizar</button>
+        <button class="btn-outline" onclick="showView('dashboard')">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="view" id="v-resultado">
+    <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div><h1 id="res-titulo">Resultado</h1><p id="res-subtitulo">–</p></div>
+      <button class="btn-sm" onclick="showView('historial')">Volver al historial</button>
+    </div>
+    <div style="display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;" id="res-summary-strip"></div>
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-title">Resultados detallados</div>
+      <div id="res-params"></div>
+    </div>
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-title">Interpretación</div>
+      <div id="res-ia" style="font-size:0.88rem;line-height:1.8;color:var(--text);white-space:pre-wrap;"></div>
+    </div>
+    <div style="background:#FFF8E6;border:1px solid #F0D080;border-radius:12px;padding:1.1rem 1.4rem;">
+      <p style="font-size:0.82rem;color:#7A5C00;line-height:1.6;"><strong>Aviso importante:</strong> Esta información es únicamente orientativa y educativa. No constituye un diagnóstico médico. Siempre consulta a un profesional de la salud.</p>
+    </div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="view" id="v-historial">
+    <div class="page-header"><h1>Historial de análisis</h1><p>Todos tus registros guardados</p></div>
+    <div class="card">
+      <div id="historial-contenido"><div class="loading-box"><div class="spinner"></div></div></div>
+    </div>
+  </div>
+
+  <!-- GRÁFICAS -->
+  <div class="view" id="v-graficas">
+    <div class="page-header"><h1>Gráficas de evolución</h1><p>Visualiza cómo han cambiado tus valores a lo largo del tiempo</p></div>
+    <div id="graficas-contenido"><div class="loading-box"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- PERFIL -->
+  <div class="view" id="v-perfil">
+    <div class="page-header"><h1>Mi perfil</h1><p>Actualiza tu información personal y antecedentes clínicos</p></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:900px;">
+
+      <!-- Datos personales -->
+      <div class="card">
+        <div class="card-title">Datos personales</div>
+        <div class="msg-error" id="perfil-error"></div>
+        <div class="msg-success" id="perfil-success"></div>
+        <div style="display:grid;gap:1.1rem;">
+          <div class="param-input-group"><label>Nombre completo</label><input type="text" id="perfil-nombre"></div>
+          <div class="param-input-group"><label>Correo electrónico</label><input type="email" id="perfil-correo"></div>
+          <div class="param-input-group"><label>Fecha de nacimiento</label><input type="date" id="perfil-fecha"></div>
+          <div class="param-input-group">
+            <label>Sexo biológico</label>
+            <select id="perfil-sexo">
+              <option value="">No especificado</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions" style="margin-top:1.5rem;">
+          <button class="btn-primary" onclick="guardarPerfil()">Guardar cambios</button>
+          <button class="btn-danger" onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <!-- Antecedentes clínicos -->
+      <div class="card">
+        <div class="card-title">Antecedentes clínicos</div>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;">Esta información personaliza la interpretación de tus análisis.</p>
+        <div class="msg-success" id="antecedentes-success"></div>
+        <div id="antecedentes-form">
+          <div class="antecedente-item">
+            <div><div class="antecedente-label">Diabetes</div><div class="antecedente-sub">Tipo 1, tipo 2 o prediabetes</div></div>
+            <div class="toggle-group">
+              <button class="toggle-btn si" data-campo="diabetes" data-val="1" onclick="toggleAntecedente(this)">Sí</button>
+              <button class="toggle-btn no active" data-campo="diabetes" data-val="0" onclick="toggleAntecedente(this)">No</button>
+            </div>
+          </div>
+          <div class="antecedente-item" id="ant-embarazo">
+            <div><div class="antecedente-label">Embarazo</div><div class="antecedente-sub">Embarazo actual</div></div>
+            <div class="toggle-group">
+              <button class="toggle-btn si" data-campo="embarazo" data-val="1" onclick="toggleAntecedente(this)">Sí</button>
+              <button class="toggle-btn no active" data-campo="embarazo" data-val="0" onclick="toggleAntecedente(this)">No</button>
+            </div>
+          </div>
+          <div class="antecedente-item">
+            <div><div class="antecedente-label">Hipertensión</div><div class="antecedente-sub">Presión arterial alta</div></div>
+            <div class="toggle-group">
+              <button class="toggle-btn si" data-campo="hipertension" data-val="1" onclick="toggleAntecedente(this)">Sí</button>
+              <button class="toggle-btn no active" data-campo="hipertension" data-val="0" onclick="toggleAntecedente(this)">No</button>
+            </div>
+          </div>
+          <div class="antecedente-item">
+            <div><div class="antecedente-label">Dislipidemia</div><div class="antecedente-sub">Colesterol o triglicéridos altos</div></div>
+            <div class="toggle-group">
+              <button class="toggle-btn si" data-campo="dislipidemia" data-val="1" onclick="toggleAntecedente(this)">Sí</button>
+              <button class="toggle-btn no active" data-campo="dislipidemia" data-val="0" onclick="toggleAntecedente(this)">No</button>
+            </div>
+          </div>
+          <div class="antecedente-item">
+            <div><div class="antecedente-label">Anemia</div><div class="antecedente-sub">Diagnóstico previo</div></div>
+            <div class="toggle-group">
+              <button class="toggle-btn si" data-campo="anemia" data-val="1" onclick="toggleAntecedente(this)">Sí</button>
+              <button class="toggle-btn no active" data-campo="anemia" data-val="0" onclick="toggleAntecedente(this)">No</button>
+            </div>
+          </div>
+          <div class="antecedente-item">
+            <div><div class="antecedente-label">Enfermedad renal</div><div class="antecedente-sub">Renal crónica, piedras, etc.</div></div>
+            <div class="toggle-group">
+              <button class="toggle-btn si" data-campo="enfermedad_renal" data-val="1" onclick="toggleAntecedente(this)">Sí</button>
+              <button class="toggle-btn no active" data-campo="enfermedad_renal" data-val="0" onclick="toggleAntecedente(this)">No</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <button class="btn-primary" onclick="guardarAntecedentes()">Guardar antecedentes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+const API = 'https://blue-turkey-268826.hostingersite.com/labclear/api';
 const token = localStorage.getItem('token');
-if (!token) window.location.href = '/index.html';
+if (!token) window.location.href = '/labclear/index.html';
 
 function authHeaders() {
- return { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token };
+  return { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token };
 }
 
-//  Catálogo de parámetros por tipo de estudio 
 const ESTUDIOS = {
- quimica: {
-  nombre: 'Química Sanguínea', icono: '',
-  params: [
-   { id: 'glucosa',     label: 'Glucosa',          unidad: 'mg/dL', hint: 'Azúcar en sangre en ayuno',     min: 70,  max: 100 },
-   { id: 'urea',        label: 'Urea',             unidad: 'mg/dL', hint: 'Desecho del metabolismo',       min: 15,  max: 45  },
-   { id: 'creatinina',  label: 'Creatinina',       unidad: 'mg/dL', hint: 'Indicador de función renal',    min: 0.6, max: 1.2 },
-   { id: 'acido_urico', label: 'Ácido Úrico',      unidad: 'mg/dL', hint: 'Metabolismo celular',           min: 3.5, max: 7.2 },
-   { id: 'proteinas',   label: 'Proteínas Totales', unidad: 'g/dL', hint: 'Proteínas en plasma',           min: 6.4, max: 8.3 },
-  ]
- },
- biometria: {
-  nombre: 'Biometría Hemática', icono: '',
-  params: [
-   { id: 'hemoglobina',  label: 'Hemoglobina',    unidad: 'g/dL',    hint: 'Transporta oxígeno',          min: 12,  max: 17  },
-   { id: 'leucocitos',   label: 'Leucocitos',     unidad: 'mil/mm³', hint: 'Glóbulos blancos',            min: 4.5, max: 11  },
-   { id: 'eritrocitos',  label: 'Eritrocitos',    unidad: 'mill/mm³',hint: 'Glóbulos rojos',              min: 4.2, max: 5.9 },
-   { id: 'hematocrito',  label: 'Hematocrito',    unidad: '%',       hint: 'Proporción de glóbulos rojos',min: 36,  max: 52  },
-   { id: 'plaquetas',    label: 'Plaquetas',      unidad: 'mil/mm³', hint: 'Coagulación sanguínea',       min: 150, max: 400 },
-  ]
- },
- lipidico: {
-  nombre: 'Perfil Lipídico', icono: '',
-  params: [
-   { id: 'colesterol',   label: 'Colesterol Total', unidad: 'mg/dL', hint: 'Lípidos totales',             min: 0,   max: 200 },
-   { id: 'trigliceridos',label: 'Triglicéridos',    unidad: 'mg/dL', hint: 'Grasas en sangre',            min: 0,   max: 150 },
-   { id: 'hdl',          label: 'HDL',              unidad: 'mg/dL', hint: 'Colesterol bueno',            min: 40,  max: 999 },
-   { id: 'ldl',          label: 'LDL',              unidad: 'mg/dL', hint: 'Colesterol malo',             min: 0,   max: 130 },
-   { id: 'vldl',         label: 'VLDL',             unidad: 'mg/dL', hint: 'Lipoproteínas de muy baja densidad', min: 0, max: 30 },
-  ]
- },
- renal: {
-  nombre: 'Función Renal', icono: '',
-  params: [
-   { id: 'creatinina',   label: 'Creatinina',    unidad: 'mg/dL', hint: 'Filtrado renal',                min: 0.6, max: 1.2 },
-   { id: 'urea',         label: 'Urea',          unidad: 'mg/dL', hint: 'Nitrógeno ureico',              min: 15,  max: 45  },
-   { id: 'acido_urico',  label: 'Ácido Úrico',   unidad: 'mg/dL', hint: 'Metabolismo de purinas',        min: 3.5, max: 7.2 },
-  ]
- },
- hepatica: {
-  nombre: 'Función Hepática', icono: '',
-  params: [
-   { id: 'alt',          label: 'ALT (TGP)',     unidad: 'U/L',   hint: 'Enzima hepática',               min: 7,   max: 56  },
-   { id: 'ast',          label: 'AST (TGO)',     unidad: 'U/L',   hint: 'Enzima hepática y muscular',    min: 10,  max: 40  },
-   { id: 'bilirrubina',  label: 'Bilirrubina',   unidad: 'mg/dL', hint: 'Producto de degradación',      min: 0.2, max: 1.2 },
-   { id: 'albumina',     label: 'Albúmina',      unidad: 'g/dL',  hint: 'Proteína producida por hígado', min: 3.5, max: 5   },
-  ]
- }
+  quimica: { nombre:'Química Sanguínea', params:[
+    {id:'glucosa',label:'Glucosa',unidad:'mg/dL',hint:'Azúcar en sangre en ayuno',min:70,max:100},
+    {id:'urea',label:'Urea',unidad:'mg/dL',hint:'Desecho del metabolismo',min:15,max:45},
+    {id:'creatinina',label:'Creatinina',unidad:'mg/dL',hint:'Indicador de función renal',min:0.6,max:1.2},
+    {id:'acido_urico',label:'Ácido Úrico',unidad:'mg/dL',hint:'Metabolismo celular',min:3.5,max:7.2},
+    {id:'proteinas',label:'Proteínas Totales',unidad:'g/dL',hint:'Proteínas en plasma',min:6.4,max:8.3},
+  ]},
+  biometria: { nombre:'Biometría Hemática', params:[
+    {id:'hemoglobina',label:'Hemoglobina',unidad:'g/dL',hint:'Transporta oxígeno',min:12,max:17},
+    {id:'leucocitos',label:'Leucocitos',unidad:'mil/mm³',hint:'Glóbulos blancos',min:4.5,max:11},
+    {id:'eritrocitos',label:'Eritrocitos',unidad:'mill/mm³',hint:'Glóbulos rojos',min:4.2,max:5.9},
+    {id:'hematocrito',label:'Hematocrito',unidad:'%',hint:'Proporción de glóbulos rojos',min:36,max:52},
+    {id:'plaquetas',label:'Plaquetas',unidad:'mil/mm³',hint:'Coagulación sanguínea',min:150,max:400},
+  ]},
+  lipidico: { nombre:'Perfil Lipídico', params:[
+    {id:'colesterol',label:'Colesterol Total',unidad:'mg/dL',hint:'Lípidos totales',min:0,max:200},
+    {id:'trigliceridos',label:'Triglicéridos',unidad:'mg/dL',hint:'Grasas en sangre',min:0,max:150},
+    {id:'hdl',label:'HDL',unidad:'mg/dL',hint:'Colesterol bueno',min:40,max:999},
+    {id:'ldl',label:'LDL',unidad:'mg/dL',hint:'Colesterol malo',min:0,max:130},
+    {id:'vldl',label:'VLDL',unidad:'mg/dL',hint:'Lipoproteínas muy baja densidad',min:0,max:30},
+  ]},
+  renal: { nombre:'Función Renal', params:[
+    {id:'creatinina',label:'Creatinina',unidad:'mg/dL',hint:'Filtrado renal',min:0.6,max:1.2},
+    {id:'urea',label:'Urea',unidad:'mg/dL',hint:'Nitrógeno ureico',min:15,max:45},
+    {id:'acido_urico',label:'Ácido Úrico',unidad:'mg/dL',hint:'Metabolismo de purinas',min:3.5,max:7.2},
+  ]},
+  hepatica: { nombre:'Función Hepática', params:[
+    {id:'alt',label:'ALT (TGP)',unidad:'U/L',hint:'Enzima hepática',min:7,max:56},
+    {id:'ast',label:'AST (TGO)',unidad:'U/L',hint:'Enzima hepática y muscular',min:10,max:40},
+    {id:'bilirrubina',label:'Bilirrubina',unidad:'mg/dL',hint:'Producto de degradación',min:0.2,max:1.2},
+    {id:'albumina',label:'Albúmina',unidad:'g/dL',hint:'Proteína producida por hígado',min:3.5,max:5},
+  ]}
 };
 
 let tipoEstudioActual = 'quimica';
-let resultadoActual = null;
+let antecedentesActuales = {diabetes:0,embarazo:0,hipertension:0,dislipidemia:0,anemia:0,enfermedad_renal:0};
 
-//  INIT 
 document.addEventListener('DOMContentLoaded', () => {
- const nombre = localStorage.getItem('nombre') || 'Usuario';
- document.getElementById('sidebar-nombre').textContent = nombre;
- document.getElementById('dash-saludo').textContent = `Hola, ${nombre.split(' ')[0]} `;
- const iniciales = nombre.split(' ').slice(0,2).map(n=>n[0]).join('').toUpperCase();
- document.getElementById('sidebar-avatar').textContent = iniciales;
- document.getElementById('perfil-avatar').textContent = iniciales;
-
- // Fecha de hoy en el formulario
- document.getElementById('fecha-estudio').value = new Date().toISOString().split('T')[0];
-
- cargarFormulario('quimica');
- cargarDashboard();
- cargarPerfil();
+  const nombre = localStorage.getItem('nombre') || 'Usuario';
+  document.getElementById('sidebar-nombre').textContent = nombre;
+  document.getElementById('dash-saludo').textContent = `Hola, ${nombre.split(' ')[0]}`;
+  const iniciales = nombre.split(' ').slice(0,2).map(n=>n[0]).join('').toUpperCase();
+  document.getElementById('sidebar-avatar').textContent = iniciales;
+  document.getElementById('fecha-estudio').value = new Date().toISOString().split('T')[0];
+  cargarFormulario('quimica');
+  cargarDashboard();
 });
 
-//  NAVEGACIÓN 
 function showView(id) {
- document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
- document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
- document.getElementById('v-' + id).classList.add('active');
- const navEl = document.getElementById('nav-' + id);
- if (navEl) navEl.classList.add('active');
-
- if (id === 'historial') cargarHistorial();
- if (id === 'graficas') cargarGraficas();
- if (id === 'perfil') cargarPerfil();
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('v-' + id).classList.add('active');
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+  if (id === 'historial') cargarHistorial();
+  if (id === 'graficas') cargarGraficas();
+  if (id === 'perfil') { cargarPerfil(); cargarAntecedentes(); }
 }
 
-//  DASHBOARD 
 async function cargarDashboard() {
- try {
-  const res = await fetch(`${API}/resultados`, { headers: authHeaders() });
-  const data = await res.json();
-  if (!res.ok) return;
+  try {
+    const res = await fetch(`${API}/resultados.php`, { headers: authHeaders() });
+    const data = await res.json();
+    if (!res.ok) return;
+    const resultados = data.resultados || [];
+    document.getElementById('stat-total').textContent = resultados.length;
+    const alertas = resultados.reduce((acc,r) => acc + (r.estado !== 'normal' ? 1 : 0), 0);
+    document.getElementById('stat-alertas').textContent = alertas;
+    document.getElementById('stat-estudios').textContent = [...new Set(resultados.map(r=>r.tipo_estudio))].length;
+    document.getElementById('stat-ultimo').textContent = resultados.length > 0
+      ? new Date(resultados[0].fecha_estudio).toLocaleDateString('es-MX',{month:'short',day:'numeric'}) : '–';
 
-  const resultados = data.resultados || [];
+    const recDiv = document.getElementById('dash-recientes');
+    recDiv.innerHTML = resultados.length === 0
+      ? '<div class="empty-state"><p>Aún no tienes análisis registrados.</p></div>'
+      : resultados.slice(0,3).map(r => renderAnalysisItem(r)).join('');
 
-  // Stats
-  document.getElementById('stat-total').textContent = resultados.length;
-  const alertas = resultados.reduce((acc, r) => acc + (r.estado !== 'normal' ? 1 : 0), 0);
-  document.getElementById('stat-alertas').textContent = alertas;
-  const tipos = [...new Set(resultados.map(r => r.tipo_estudio))];
-  document.getElementById('stat-estudios').textContent = tipos.length;
-  if (resultados.length > 0) {
-   const ultimo = new Date(resultados[0].fecha_estudio);
-   document.getElementById('stat-ultimo').textContent = ultimo.toLocaleDateString('es-MX', { month: 'short', day: 'numeric' });
-  } else {
-   document.getElementById('stat-ultimo').textContent = '–';
-  }
-
-  // Recientes
-  const recDiv = document.getElementById('dash-recientes');
-  if (resultados.length === 0) {
-   recDiv.innerHTML = '<div class="empty-state"><div class="e-icon"></div><p>Aún no tienes análisis registrados.</p></div>';
-  } else {
-   recDiv.innerHTML = resultados.slice(0, 3).map(r => renderAnalysisItem(r)).join('');
-  }
-
-  // Alertas
-  const alertasDiv = document.getElementById('dash-alertas');
-  const conAlerta = resultados.filter(r => r.estado !== 'normal').slice(0, 4);
-  if (conAlerta.length === 0) {
-   alertasDiv.innerHTML = '<div class="empty-state"><div class="e-icon"></div><p>¡Todos tus valores están en rango normal!</p></div>';
-  } else {
-   alertasDiv.innerHTML = conAlerta.map(r => {
-    const color = r.estado === 'alerta' ? 'var(--red-soft)' : 'var(--amber)';
-    return `<div class="alert-item"> <div class="alert-dot" style="background:${color}"></div> <div class="alert-text"> <strong>${ESTUDIOS[r.tipo_estudio]?.nombre || r.tipo_estudio} — ${r.fecha_estudio}</strong> <span>Estado: ${r.estado}. Revisa el análisis para más detalles.</span> </div> </div>`;
-   }).join('');
-  }
- } catch (e) {
-  console.error('Error cargando dashboard', e);
- }
+    const alertasDiv = document.getElementById('dash-alertas');
+    const conAlerta = resultados.filter(r => r.estado !== 'normal').slice(0,4);
+    alertasDiv.innerHTML = conAlerta.length === 0
+      ? '<div class="empty-state"><p>Todos tus valores están en rango normal.</p></div>'
+      : conAlerta.map(r => {
+          const color = r.estado === 'alerta' ? 'var(--red-soft)' : 'var(--amber)';
+          return `<div class="alert-item"><div class="alert-dot" style="background:${color}"></div><div class="alert-text"><strong>${ESTUDIOS[r.tipo_estudio]?.nombre||r.tipo_estudio} — ${r.fecha_estudio}</strong><span>Estado: ${r.estado}. Revisa el análisis para más detalles.</span></div></div>`;
+        }).join('');
+  } catch(e) { console.error(e); }
 }
 
 function renderAnalysisItem(r) {
- const estudio = ESTUDIOS[r.tipo_estudio] || { nombre: r.tipo_estudio, icono: '' };
- const valores = r.valores || {};
- const numParams = Object.keys(valores).length;
- let badge = '';
- if (r.estado === 'alerta') badge = `<span class="analysis-badge" style="background:#FFEDED;color:var(--red-soft)">Alerta</span>`;
- else if (r.estado === 'precaucion') badge = `<span class="analysis-badge" style="background:#FFF3E0;color:#C07A00">Precaución</span>`;
- else badge = `<span class="analysis-badge" style="background:var(--teal-light);color:var(--teal)">Normal</span>`;
- return `<div class="analysis-item" onclick="verResultado(${r.id})"> <div class="analysis-icon teal">${estudio.icono}</div> <div class="analysis-info"> <strong>${estudio.nombre}</strong> <span>${formatFecha(r.fecha_estudio)} · ${numParams} parámetros</span> </div> ${badge}
- </div>`;
+  const estudio = ESTUDIOS[r.tipo_estudio] || {nombre:r.tipo_estudio};
+  const numParams = Object.keys(r.valores||{}).length;
+  let badge = r.estado === 'alerta'
+    ? `<span class="analysis-badge" style="background:#FFEDED;color:var(--red-soft)">Alerta</span>`
+    : r.estado === 'precaucion'
+    ? `<span class="analysis-badge" style="background:#FFF3E0;color:#C07A00">Precaución</span>`
+    : `<span class="analysis-badge" style="background:var(--teal-light);color:var(--teal)">Normal</span>`;
+  const abbr = estudio.nombre.split(' ').map(w=>w[0]).join('').slice(0,3).toUpperCase();
+  return `<div class="analysis-item" onclick="verResultado(${r.id})">
+    <div class="analysis-icon">${abbr}</div>
+    <div class="analysis-info"><strong>${estudio.nombre}</strong><span>${formatFecha(r.fecha_estudio)} · ${numParams} parámetros</span></div>
+    ${badge}
+  </div>`;
 }
 
-//  FORMULARIO DE ANÁLISIS 
 function selectStudy(btn) {
- document.querySelectorAll('.study-tab').forEach(t => t.classList.remove('active'));
- btn.classList.add('active');
- tipoEstudioActual = btn.dataset.study;
- cargarFormulario(tipoEstudioActual);
+  document.querySelectorAll('.study-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  tipoEstudioActual = btn.dataset.study;
+  cargarFormulario(tipoEstudioActual);
 }
 
 function cargarFormulario(tipo) {
- const estudio = ESTUDIOS[tipo];
- const grid = document.getElementById('params-form');
- grid.innerHTML = estudio.params.map(p => `
-  <div class="param-input-group"> <label>${p.label} <span class="param-unit">${p.unidad}</span></label> <input type="number" step="0.01" id="param-${p.id}" placeholder="${p.min} – ${p.max}"> <div class="param-hint">${p.hint}</div> </div> `).join('');
+  const estudio = ESTUDIOS[tipo];
+  document.getElementById('params-form').innerHTML = estudio.params.map(p => `
+    <div class="param-input-group">
+      <label>${p.label} <span class="param-unit">${p.unidad}</span></label>
+      <input type="number" step="0.01" id="param-${p.id}" placeholder="${p.min} – ${p.max}">
+      <div class="param-hint">${p.hint}</div>
+    </div>`).join('');
 }
 
 async function enviarAnalisis() {
- const fecha = document.getElementById('fecha-estudio').value;
- const errDiv = document.getElementById('analisis-error');
- errDiv.classList.remove('show');
+  const fecha = document.getElementById('fecha-estudio').value;
+  const errDiv = document.getElementById('analisis-error');
+  errDiv.classList.remove('show');
+  if (!fecha) { errDiv.textContent='Selecciona la fecha del análisis.'; return errDiv.classList.add('show'); }
 
- if (!fecha) {
-  errDiv.textContent = 'Selecciona la fecha del análisis.';
-  return errDiv.classList.add('show');
- }
-
- const estudio = ESTUDIOS[tipoEstudioActual];
- const valores = {};
- estudio.params.forEach(p => {
-  const val = document.getElementById('param-' + p.id)?.value;
-  if (val && val.trim() !== '') valores[p.id] = parseFloat(val);
- });
-
- if (Object.keys(valores).length === 0) {
-  errDiv.textContent = 'Ingresa al menos un valor para analizar.';
-  return errDiv.classList.add('show');
- }
-
- const btn = document.getElementById('btn-analizar');
- btn.disabled = true;
- btn.textContent = 'Analizando… ';
-
- try {
-  const res = await fetch(`${API}/analizar`, {
-   method: 'POST',
-   headers: authHeaders(),
-   body: JSON.stringify({ tipo_estudio: tipoEstudioActual, fecha_estudio: fecha, valores })
+  const valores = {};
+  ESTUDIOS[tipoEstudioActual].params.forEach(p => {
+    const val = document.getElementById('param-' + p.id)?.value;
+    if (val && val.trim() !== '') valores[p.id] = parseFloat(val);
   });
-  const data = await res.json();
 
-  if (!res.ok) {
-   errDiv.textContent = data.error || 'Error al procesar el análisis.';
-   errDiv.classList.add('show');
-  } else {
-   resultadoActual = data.resultado;
-   mostrarResultado(data.resultado);
-   showView('resultado');
-   cargarDashboard();
-  }
- } catch (e) {
-  errDiv.textContent = 'No se pudo conectar con el servidor.';
-  errDiv.classList.add('show');
- } finally {
-  btn.disabled = false;
-  btn.textContent = 'Analizar';
- }
+  if (Object.keys(valores).length === 0) { errDiv.textContent='Ingresa al menos un valor.'; return errDiv.classList.add('show'); }
+
+  const btn = document.getElementById('btn-analizar');
+  btn.disabled = true; btn.textContent = 'Analizando…';
+
+  try {
+    const res = await fetch(`${API}/analisis.php`, {
+      method:'POST', headers:authHeaders(),
+      body:JSON.stringify({tipo_estudio:tipoEstudioActual,fecha_estudio:fecha,valores})
+    });
+    const data = await res.json();
+    if (!res.ok) { errDiv.textContent=data.error||'Error.'; errDiv.classList.add('show'); }
+    else { mostrarResultado(data.resultado); showView('resultado'); cargarDashboard(); }
+  } catch(e) { errDiv.textContent='No se pudo conectar.'; errDiv.classList.add('show'); }
+  finally { btn.disabled=false; btn.textContent='Analizar'; }
 }
 
-//  MOSTRAR RESULTADO 
 function verResultado(id) {
- // Primero buscamos en el historial cargado
- fetch(`${API}/resultados/${id}`, { headers: authHeaders() })
-  .then(r => r.json())
-  .then(data => {
-   mostrarResultado(data.resultado);
-   showView('resultado');
-  });
+  fetch(`${API}/resultados.php?id=${id}`, {headers:authHeaders()})
+    .then(r=>r.json()).then(data=>{mostrarResultado(data.resultado);showView('resultado');});
 }
 
 function mostrarResultado(r) {
- const estudio = ESTUDIOS[r.tipo_estudio] || { nombre: r.tipo_estudio };
- document.getElementById('res-titulo').textContent = estudio.nombre;
- document.getElementById('res-subtitulo').textContent =
-  `${formatFecha(r.fecha_estudio)} · ${Object.keys(r.valores || {}).length} parámetros evaluados`;
+  const estudio = ESTUDIOS[r.tipo_estudio] || {nombre:r.tipo_estudio};
+  document.getElementById('res-titulo').textContent = estudio.nombre;
+  document.getElementById('res-subtitulo').textContent = `${formatFecha(r.fecha_estudio)} · ${Object.keys(r.valores||{}).length} parámetros evaluados`;
 
- // Summary strip
- const params = ESTUDIOS[r.tipo_estudio]?.params || [];
- let normales = 0, altos = 0, bajos = 0;
- params.forEach(p => {
-  const v = r.valores?.[p.id];
-  if (v === undefined || v === null) return;
-  if (v < p.min) bajos++;
-  else if (v > p.max) altos++;
-  else normales++;
- });
- document.getElementById('res-summary-strip').innerHTML = `
-  <div style="background:var(--teal-light);border:1px solid #C3E4DE;border-radius:12px;padding:0.8rem 1.4rem;display:flex;align-items:center;gap:0.6rem;"> <span style="font-size:1.2rem;"></span> <div><strong style="color:var(--teal);font-size:1.1rem;">${normales}</strong><span style="font-size:0.8rem;color:var(--teal);display:block;">En rango normal</span></div> </div> <div style="background:#FFEDED;border:1px solid #F5C5C5;border-radius:12px;padding:0.8rem 1.4rem;display:flex;align-items:center;gap:0.6rem;"> <span style="font-size:1.2rem;"></span> <div><strong style="color:var(--red-soft);font-size:1.1rem;">${altos}</strong><span style="font-size:0.8rem;color:var(--red-soft);display:block;">Valores altos</span></div> </div> <div style="background:#FFF3E0;border:1px solid #F5DCAA;border-radius:12px;padding:0.8rem 1.4rem;display:flex;align-items:center;gap:0.6rem;"> <span style="font-size:1.2rem;"></span> <div><strong style="color:#C07A00;font-size:1.1rem;">${bajos}</strong><span style="font-size:0.8rem;color:#C07A00;display:block;">Valores bajos</span></div> </div> `;
+  const params = ESTUDIOS[r.tipo_estudio]?.params || [];
+  let normales=0,altos=0,bajos=0;
+  params.forEach(p=>{
+    const v=r.valores?.[p.id];
+    if(v===undefined||v===null)return;
+    if(v<p.min)bajos++;else if(v>p.max)altos++;else normales++;
+  });
 
- // Params detalle
- const paramsDiv = document.getElementById('res-params');
- if (params.length === 0 || !r.valores) {
-  paramsDiv.innerHTML = '<p style="color:var(--muted);font-size:0.85rem;">Sin detalle de parámetros disponible.</p>';
- } else {
+  document.getElementById('res-summary-strip').innerHTML = `
+    <div style="background:var(--teal-light);border:1px solid #C3E4DE;border-radius:12px;padding:0.8rem 1.4rem;display:flex;align-items:center;gap:0.6rem;">
+      <div><strong style="color:var(--teal);font-size:1.1rem;">${normales}</strong><span style="font-size:0.8rem;color:var(--teal);display:block;">En rango normal</span></div>
+    </div>
+    <div style="background:#FFEDED;border:1px solid #F5C5C5;border-radius:12px;padding:0.8rem 1.4rem;display:flex;align-items:center;gap:0.6rem;">
+      <div><strong style="color:var(--red-soft);font-size:1.1rem;">${altos}</strong><span style="font-size:0.8rem;color:var(--red-soft);display:block;">Valores altos</span></div>
+    </div>
+    <div style="background:#FFF3E0;border:1px solid #F5DCAA;border-radius:12px;padding:0.8rem 1.4rem;display:flex;align-items:center;gap:0.6rem;">
+      <div><strong style="color:#C07A00;font-size:1.1rem;">${bajos}</strong><span style="font-size:0.8rem;color:#C07A00;display:block;">Valores bajos</span></div>
+    </div>`;
+
+  const paramsDiv = document.getElementById('res-params');
   paramsDiv.innerHTML = params.map(p => {
-   const v = r.valores[p.id];
-   if (v === undefined || v === null) return '';
-   const rango = p.max - p.min;
-   const pct = Math.min(100, Math.max(0, ((v - (p.min - rango * 0.2)) / (rango * 1.4)) * 100));
-   let estado, color, bg, borde;
-   if (v < p.min) { estado = ' Bajo'; color = '#C07A00'; bg = '#FFF3E0'; borde = 'var(--amber)'; }
-   else if (v > p.max) { estado = ' Alto'; color = 'var(--red-soft)'; bg = '#FFF5F5'; borde = 'var(--red-soft)'; }
-   else { estado = 'Normal'; color = 'var(--teal)'; bg = 'var(--cream)'; borde = 'transparent'; }
-   return `<div class="result-param"> <div class="result-param-header"> <div> <strong style="font-size:0.9rem;">${p.label}</strong> <span style="font-size:0.78rem;color:var(--muted);margin-left:0.5rem;">${p.hint}</span> </div> <div style="display:flex;align-items:center;gap:1rem;"> <span style="font-size:1rem;font-weight:500;color:${color};">${v} ${p.unidad}</span> <span style="background:${v<p.min?'#FFF3E0':v>p.max?'#FFEDED':'var(--teal-light)'};color:${color};font-size:0.72rem;font-weight:500;padding:0.2rem 0.7rem;border-radius:50px;">${estado}</span> </div> </div> <div class="result-bar-wrap"> <div class="result-bar-zone" style="left:20%;right:20%;background:var(--teal-light);"></div> <div class="result-bar-dot" style="left:${pct}%;background:${color};"></div> </div> <div class="result-labels"> <span>Bajo (&lt;${p.min})</span><span>Normal (${p.min}–${p.max})</span><span>Alto (&gt;${p.max})</span> </div> </div>`;
+    const v = r.valores[p.id];
+    if(v===undefined||v===null)return'';
+    const rango=p.max-p.min;
+    const pct=Math.min(100,Math.max(0,((v-(p.min-rango*0.2))/(rango*1.4))*100));
+    let color,estado;
+    if(v<p.min){estado='Bajo';color='#C07A00';}
+    else if(v>p.max){estado='Alto';color='var(--red-soft)';}
+    else{estado='Normal';color='var(--teal)';}
+    return `<div class="result-param">
+      <div class="result-param-header">
+        <div><strong style="font-size:0.9rem;">${p.label}</strong><span style="font-size:0.78rem;color:var(--muted);margin-left:0.5rem;">${p.hint}</span></div>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1rem;font-weight:500;color:${color};">${v} ${p.unidad}</span>
+          <span style="background:${v<p.min?'#FFF3E0':v>p.max?'#FFEDED':'var(--teal-light)'};color:${color};font-size:0.72rem;font-weight:500;padding:0.2rem 0.7rem;border-radius:50px;">${estado}</span>
+        </div>
+      </div>
+      <div class="result-bar-wrap">
+        <div class="result-bar-zone" style="left:20%;right:20%;background:var(--teal-light);"></div>
+        <div class="result-bar-dot" style="left:${pct}%;background:${color};"></div>
+      </div>
+      <div class="result-labels"><span>Bajo (&lt;${p.min})</span><span>Normal (${p.min}–${p.max})</span><span>Alto (&gt;${p.max})</span></div>
+    </div>`;
   }).join('');
- }
 
- // IA summary
- document.getElementById('res-ia').textContent = r.resumen_ia || 'Sin interpretación disponible.';
+  document.getElementById('res-ia').textContent = r.resumen_ia || 'Sin interpretación disponible.';
 }
 
-//  HISTORIAL 
 async function cargarHistorial() {
- const div = document.getElementById('historial-contenido');
- div.innerHTML = '<div class="loading-box"><div class="spinner"></div><p style="color:var(--muted);font-size:0.85rem;">Cargando…</p></div>';
- try {
-  const res = await fetch(`${API}/resultados`, { headers: authHeaders() });
-  const data = await res.json();
-  const resultados = data.resultados || [];
-  if (resultados.length === 0) {
-   div.innerHTML = '<div class="empty-state"><div class="e-icon"></div><p>No tienes análisis guardados aún.<br>¡Registra tu primer análisis!</p></div>';
-   return;
-  }
-  div.innerHTML = `<table style="width:100%;border-collapse:collapse;"> <thead><tr style="border-bottom:2px solid var(--border);"> <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Estudio</th> <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Fecha</th> <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Parámetros</th> <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Estado</th> <th style="text-align:right;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Acciones</th> </tr></thead> <tbody> ${resultados.map(r => {
-     const est = ESTUDIOS[r.tipo_estudio] || { nombre: r.tipo_estudio, icono: '' };
-     const numP = Object.keys(r.valores || {}).length;
-     let estadoBadge;
-     if (r.estado === 'alerta') estadoBadge = `<span style="background:#FFEDED;color:var(--red-soft);font-size:0.72rem;padding:0.2rem 0.65rem;border-radius:50px;font-weight:500;">Alerta</span>`;
-     else if (r.estado === 'precaucion') estadoBadge = `<span style="background:#FFF3E0;color:#C07A00;font-size:0.72rem;padding:0.2rem 0.65rem;border-radius:50px;font-weight:500;">Precaución</span>`;
-     else estadoBadge = `<span style="background:var(--teal-light);color:var(--teal);font-size:0.72rem;padding:0.2rem 0.65rem;border-radius:50px;font-weight:500;">Normal</span>`;
-     return `<tr style="border-bottom:1px solid var(--border);"> <td style="padding:0.9rem 0;font-size:0.88rem;font-weight:500;">${est.icono} ${est.nombre}</td> <td style="padding:0.9rem 0;font-size:0.85rem;color:var(--muted);">${formatFecha(r.fecha_estudio)}</td> <td style="padding:0.9rem 0;font-size:0.85rem;color:var(--muted);">${numP} parámetros</td> <td style="padding:0.9rem 0;">${estadoBadge}</td> <td style="padding:0.9rem 0;text-align:right;display:flex;gap:0.5rem;justify-content:flex-end;"> <button onclick="verResultado(${r.id})" style="background:var(--teal-light);color:var(--teal);border:none;padding:0.35rem 0.8rem;border-radius:7px;font-size:0.78rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Ver</button> <button onclick="eliminarResultado(${r.id})" style="background:#FFEDED;color:var(--red-soft);border:none;padding:0.35rem 0.8rem;border-radius:7px;font-size:0.78rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Eliminar</button> </td> </tr>`;
-    }).join('')}
-   </tbody> </table>`;
- } catch(e) {
-  div.innerHTML = '<p style="color:var(--red-soft);padding:1rem;">Error cargando el historial.</p>';
- }
+  const div = document.getElementById('historial-contenido');
+  div.innerHTML = '<div class="loading-box"><div class="spinner"></div></div>';
+  try {
+    const res = await fetch(`${API}/resultados.php`, {headers:authHeaders()});
+    const data = await res.json();
+    const resultados = data.resultados || [];
+    if (resultados.length === 0) { div.innerHTML='<div class="empty-state"><p>No tienes análisis guardados aún.</p></div>'; return; }
+    div.innerHTML = `<table style="width:100%;border-collapse:collapse;">
+      <thead><tr style="border-bottom:2px solid var(--border);">
+        <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Estudio</th>
+        <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Fecha</th>
+        <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Parámetros</th>
+        <th style="text-align:left;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Estado</th>
+        <th style="text-align:right;padding:0.7rem 0;font-size:0.8rem;color:var(--muted);font-weight:500;">Acciones</th>
+      </tr></thead>
+      <tbody>${resultados.map(r => {
+        const est = ESTUDIOS[r.tipo_estudio]||{nombre:r.tipo_estudio};
+        const numP = Object.keys(r.valores||{}).length;
+        const badge = r.estado==='alerta'
+          ? `<span style="background:#FFEDED;color:var(--red-soft);font-size:0.72rem;padding:0.2rem 0.65rem;border-radius:50px;font-weight:500;">Alerta</span>`
+          : r.estado==='precaucion'
+          ? `<span style="background:#FFF3E0;color:#C07A00;font-size:0.72rem;padding:0.2rem 0.65rem;border-radius:50px;font-weight:500;">Precaución</span>`
+          : `<span style="background:var(--teal-light);color:var(--teal);font-size:0.72rem;padding:0.2rem 0.65rem;border-radius:50px;font-weight:500;">Normal</span>`;
+        return `<tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.9rem 0;font-size:0.88rem;font-weight:500;">${est.nombre}</td>
+          <td style="padding:0.9rem 0;font-size:0.85rem;color:var(--muted);">${formatFecha(r.fecha_estudio)}</td>
+          <td style="padding:0.9rem 0;font-size:0.85rem;color:var(--muted);">${numP} parámetros</td>
+          <td style="padding:0.9rem 0;">${badge}</td>
+          <td style="padding:0.9rem 0;text-align:right;display:flex;gap:0.5rem;justify-content:flex-end;">
+            <button onclick="verResultado(${r.id})" style="background:var(--teal-light);color:var(--teal);border:none;padding:0.35rem 0.8rem;border-radius:7px;font-size:0.78rem;cursor:pointer;font-family:'Inter',sans-serif;">Ver</button>
+            <button onclick="eliminarResultado(${r.id})" style="background:#FFEDED;color:var(--red-soft);border:none;padding:0.35rem 0.8rem;border-radius:7px;font-size:0.78rem;cursor:pointer;font-family:'Inter',sans-serif;">Eliminar</button>
+          </td>
+        </tr>`;
+      }).join('')}</tbody></table>`;
+  } catch(e) { div.innerHTML='<p style="color:var(--red-soft);padding:1rem;">Error cargando el historial.</p>'; }
 }
 
 async function eliminarResultado(id) {
- if (!confirm('¿Estás seguro de que deseas eliminar este análisis? Esta acción no se puede deshacer.')) return;
- try {
-  const res = await fetch(`${API}/resultados/${id}`, { method: 'DELETE', headers: authHeaders() });
-  if (res.ok) { cargarHistorial(); cargarDashboard(); }
- } catch(e) { alert('Error al eliminar.'); }
+  if (!confirm('¿Eliminar este análisis? Esta acción no se puede deshacer.')) return;
+  try {
+    const res = await fetch(`${API}/resultados.php?id=${id}`,{method:'DELETE',headers:authHeaders()});
+    if (res.ok) { cargarHistorial(); cargarDashboard(); }
+  } catch(e) { alert('Error al eliminar.'); }
 }
 
-//  GRÁFICAS 
 async function cargarGraficas() {
- const div = document.getElementById('graficas-contenido');
- div.innerHTML = '<div class="loading-box"><div class="spinner"></div></div>';
- try {
-  const res = await fetch(`${API}/resultados`, { headers: authHeaders() });
-  const data = await res.json();
-  const resultados = data.resultados || [];
-  if (resultados.length < 2) {
-   div.innerHTML = '<div class="empty-state"><div class="e-icon"></div><p>Necesitas al menos 2 análisis del mismo tipo para ver la evolución.</p></div>';
-   return;
-  }
-  // Agrupar por parámetro todos los resultados
-  const porParam = {};
-  resultados.reverse().forEach(r => {
-   Object.entries(r.valores || {}).forEach(([k, v]) => {
-    if (!porParam[k]) porParam[k] = [];
-    porParam[k].push({ fecha: r.fecha_estudio, valor: v, tipo: r.tipo_estudio });
-   });
-  });
-  const entries = Object.entries(porParam).filter(([_, vs]) => vs.length >= 2).slice(0, 6);
-  if (entries.length === 0) {
-   div.innerHTML = '<div class="empty-state"><div class="e-icon"></div><p>No hay suficientes datos para mostrar gráficas de evolución.</p></div>';
-   return;
-  }
-  div.innerHTML = `<div class="two-col">${entries.map(([param, vals]) => {
-   const meta = Object.values(ESTUDIOS).flatMap(e => e.params).find(p => p.id === param);
-   const label = meta?.label || param;
-   const unidad = meta?.unidad || '';
-   const maxVal = Math.max(...vals.map(v => v.valor)) * 1.2;
-   const bars = vals.map(v => {
-    const pct = Math.round((v.valor / maxVal) * 130);
-    let color = 'var(--teal)';
-    if (meta && v.valor > meta.max) color = 'var(--red-soft)';
-    else if (meta && v.valor < meta.min) color = 'var(--amber)';
-    return `<div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;flex:1;"> <span style="font-size:0.75rem;font-weight:500;color:${color}">${v.valor}</span> <div style="width:100%;background:${color};border-radius:6px 6px 0 0;height:${pct}px;"></div> <span style="font-size:0.68rem;color:var(--muted)">${formatFechaCorta(v.fecha)}</span> </div>`;
-   }).join('');
-   return `<div class="card"> <div class="card-title">${label} (${unidad})${meta ? `<span style="font-size:0.72rem;color:var(--muted);font-weight:400;">Normal: ${meta.min}–${meta.max}</span>` : ''}</div> <div style="height:160px;display:flex;align-items:flex-end;gap:0.8rem;padding:0.5rem 0;border-bottom:2px solid var(--border);">${bars}</div> </div>`;
-  }).join('')}</div>`;
- } catch(e) {
-  div.innerHTML = '<p style="color:var(--red-soft);padding:1rem;">Error cargando las gráficas.</p>';
- }
+  const div = document.getElementById('graficas-contenido');
+  div.innerHTML = '<div class="loading-box"><div class="spinner"></div></div>';
+  try {
+    const res = await fetch(`${API}/resultados.php`,{headers:authHeaders()});
+    const data = await res.json();
+    const resultados = data.resultados || [];
+    if (resultados.length < 2) { div.innerHTML='<div class="empty-state"><p>Necesitas al menos 2 análisis para ver gráficas de evolución.</p></div>'; return; }
+    const porParam = {};
+    [...resultados].reverse().forEach(r => {
+      Object.entries(r.valores||{}).forEach(([k,v]) => {
+        if (!porParam[k]) porParam[k]=[];
+        porParam[k].push({fecha:r.fecha_estudio,valor:v});
+      });
+    });
+    const entries = Object.entries(porParam).filter(([_,vs])=>vs.length>=2).slice(0,6);
+    if (entries.length===0) { div.innerHTML='<div class="empty-state"><p>No hay suficientes datos para mostrar gráficas.</p></div>'; return; }
+    div.innerHTML = `<div class="two-col">${entries.map(([param,vals])=>{
+      const meta = Object.values(ESTUDIOS).flatMap(e=>e.params).find(p=>p.id===param);
+      const label = meta?.label||param;
+      const unidad = meta?.unidad||'';
+      const maxVal = Math.max(...vals.map(v=>v.valor))*1.2;
+      const bars = vals.map(v=>{
+        const pct=Math.round((v.valor/maxVal)*130);
+        let color='var(--teal)';
+        if(meta&&v.valor>meta.max)color='var(--red-soft)';
+        else if(meta&&v.valor<meta.min)color='var(--amber)';
+        return `<div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;flex:1;">
+          <span style="font-size:0.75rem;font-weight:500;color:${color}">${v.valor}</span>
+          <div style="width:100%;background:${color};border-radius:6px 6px 0 0;height:${pct}px;"></div>
+          <span style="font-size:0.68rem;color:var(--muted)">${formatFechaCorta(v.fecha)}</span>
+        </div>`;
+      }).join('');
+      return `<div class="card">
+        <div class="card-title">${label} (${unidad})${meta?`<span style="font-size:0.72rem;color:var(--muted);font-weight:400;">Normal: ${meta.min}–${meta.max}</span>`:''}</div>
+        <div style="height:160px;display:flex;align-items:flex-end;gap:0.8rem;padding:0.5rem 0;border-bottom:2px solid var(--border);">${bars}</div>
+      </div>`;
+    }).join('')}</div>`;
+  } catch(e) { div.innerHTML='<p style="color:var(--red-soft);padding:1rem;">Error cargando las gráficas.</p>'; }
 }
 
-//  PERFIL 
 async function cargarPerfil() {
- try {
-  const res = await fetch(`${API}/perfil`, { headers: authHeaders() });
-  const data = await res.json();
-  if (!res.ok) return;
-  const u = data.usuario;
-  document.getElementById('perfil-nombre').value = u.nombre || '';
-  document.getElementById('perfil-correo').value = u.correo || '';
-  document.getElementById('perfil-fecha').value = u.fecha_nac || '';
-  document.getElementById('perfil-sexo').value = u.sexo || '';
-  document.getElementById('perfil-nombre-display').textContent = u.nombre || '–';
-  document.getElementById('perfil-correo-display').textContent = u.correo || '–';
-  const iniciales = (u.nombre || 'U').split(' ').slice(0,2).map(n=>n[0]).join('').toUpperCase();
-  document.getElementById('perfil-avatar').textContent = iniciales;
-  document.getElementById('sidebar-avatar').textContent = iniciales;
-  document.getElementById('sidebar-nombre').textContent = u.nombre || '';
-  localStorage.setItem('nombre', u.nombre || '');
- } catch(e) {}
+  try {
+    const res = await fetch(`${API}/perfil.php`,{headers:authHeaders()});
+    const data = await res.json();
+    if(!res.ok)return;
+    const u=data.usuario;
+    document.getElementById('perfil-nombre').value=u.nombre||'';
+    document.getElementById('perfil-correo').value=u.correo||'';
+    document.getElementById('perfil-fecha').value=u.fecha_nac||'';
+    document.getElementById('perfil-sexo').value=u.sexo||'';
+    const iniciales=(u.nombre||'U').split(' ').slice(0,2).map(n=>n[0]).join('').toUpperCase();
+    document.getElementById('sidebar-avatar').textContent=iniciales;
+    document.getElementById('sidebar-nombre').textContent=u.nombre||'';
+    localStorage.setItem('nombre',u.nombre||'');
+    if(u.sexo==='M') document.getElementById('ant-embarazo').style.display='none';
+  } catch(e){}
 }
 
 async function guardarPerfil() {
- document.getElementById('perfil-error').classList.remove('show');
- document.getElementById('perfil-success').classList.remove('show');
- const body = {
-  nombre: document.getElementById('perfil-nombre').value.trim(),
-  correo: document.getElementById('perfil-correo').value.trim(),
-  fecha_nac: document.getElementById('perfil-fecha').value,
-  sexo: document.getElementById('perfil-sexo').value,
- };
- try {
-  const res = await fetch(`${API}/perfil`, { method: 'PUT', headers: authHeaders(), body: JSON.stringify(body) });
-  const data = await res.json();
-  if (!res.ok) {
-   document.getElementById('perfil-error').textContent = data.error || 'Error al guardar.';
-   document.getElementById('perfil-error').classList.add('show');
-  } else {
-   document.getElementById('perfil-success').textContent = 'Cambios guardados correctamente.';
-   document.getElementById('perfil-success').classList.add('show');
-   localStorage.setItem('nombre', body.nombre);
-   cargarPerfil();
-  }
- } catch(e) {
-  document.getElementById('perfil-error').textContent = 'No se pudo conectar con el servidor.';
-  document.getElementById('perfil-error').classList.add('show');
- }
+  document.getElementById('perfil-error').classList.remove('show');
+  document.getElementById('perfil-success').classList.remove('show');
+  const body={nombre:document.getElementById('perfil-nombre').value.trim(),correo:document.getElementById('perfil-correo').value.trim(),fecha_nac:document.getElementById('perfil-fecha').value,sexo:document.getElementById('perfil-sexo').value};
+  try {
+    const res=await fetch(`${API}/perfil.php`,{method:'PUT',headers:authHeaders(),body:JSON.stringify(body)});
+    const data=await res.json();
+    if(!res.ok){document.getElementById('perfil-error').textContent=data.error||'Error al guardar.';document.getElementById('perfil-error').classList.add('show');}
+    else{document.getElementById('perfil-success').textContent='Cambios guardados correctamente.';document.getElementById('perfil-success').classList.add('show');localStorage.setItem('nombre',body.nombre);cargarPerfil();}
+  } catch(e){document.getElementById('perfil-error').textContent='No se pudo conectar.';document.getElementById('perfil-error').classList.add('show');}
 }
 
-//  SESIÓN 
+async function cargarAntecedentes() {
+  try {
+    const res = await fetch(`${API}/antecedentes.php`,{headers:authHeaders()});
+    const data = await res.json();
+    if(!data.antecedentes)return;
+    const ant = data.antecedentes;
+    Object.keys(ant).forEach(campo => {
+      antecedentesActuales[campo] = parseInt(ant[campo])||0;
+      const btns = document.querySelectorAll(`.toggle-btn[data-campo="${campo}"]`);
+      btns.forEach(btn => {
+        btn.classList.remove('active');
+        if(parseInt(btn.dataset.val)===antecedentesActuales[campo]) btn.classList.add('active');
+      });
+    });
+  } catch(e){}
+}
+
+function toggleAntecedente(btn) {
+  const campo = btn.dataset.campo;
+  btn.closest('.toggle-group').querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  antecedentesActuales[campo] = parseInt(btn.dataset.val);
+}
+
+async function guardarAntecedentes() {
+  try {
+    const res = await fetch(`${API}/antecedentes.php`,{method:'POST',headers:authHeaders(),body:JSON.stringify(antecedentesActuales)});
+    const data = await res.json();
+    if(res.ok){
+      const s=document.getElementById('antecedentes-success');
+      s.textContent='Antecedentes actualizados correctamente.';
+      s.classList.add('show');
+      setTimeout(()=>s.classList.remove('show'),3000);
+    }
+  } catch(e){}
+}
+
 function cerrarSesion() {
- localStorage.removeItem('token');
- localStorage.removeItem('nombre');
- window.location.href = '/index.html';
+  localStorage.removeItem('token');
+  localStorage.removeItem('nombre');
+  window.location.href='/labclear/index.html';
 }
 
-//  UTILS 
 function formatFecha(fecha) {
- if (!fecha) return '–';
- const d = new Date(fecha + 'T12:00:00');
- return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'short', year: 'numeric' });
+  if(!fecha)return'–';
+  return new Date(fecha+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'short',year:'numeric'});
 }
 function formatFechaCorta(fecha) {
- if (!fecha) return '–';
- const d = new Date(fecha + 'T12:00:00');
- return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'short' });
+  if(!fecha)return'–';
+  return new Date(fecha+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'short'});
 }
 </script>
 </body>
